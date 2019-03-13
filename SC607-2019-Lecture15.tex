@@ -95,7 +95,7 @@ Let $S$ be a convex set and let $f$ be a continuously differentiable ($C^{1}$) c
 %    subject to $x\in S$ 
 %\end{center}
 \begin{align}
-    \text{minimize }  &\null f(x),\\
+    \text{minimize }  &\null f(x)\\
     \text{subject to } &\null x\in S
 \end{align}
 Then $x^{*}$ is minimizer if and only if $\:\nabla f(x^{*})^\top(y-x^{*}) \geqslant 0$, for all $y\in S$.
@@ -119,81 +119,96 @@ where $f \in C^{1}$. If $x^{*}$ is a local minimum, then $\nabla f(x^{*})^{\top}
 
 
 \section{Introduction}
-In this lecture, we will derive a necessary and sufficient condition for $x^{*}$ to be a minimizer for convex optimization problem and also find a condition on local minimizer $x^{*}$, where $x^{*}$ is constrained over the tangent cone set $T(x^{*}, S)$, where $S$ need not be convex. 
+In this lecture, Constraint Qualifications are discussed. Farkas Lemma and Karush kuhn Tucker conditions for an optimisation problem with inequality constraints are proved  
 
-\section{Minimizer of Convex Optimiztion Problem}
+\section{Motivation for need of Constraint Qualification(CQ)}
+From Theorem 15.1 local minima $x^*$ satifies the condition $\nabla f(x^{*})^{\top}d \geqslant 0, \hspace{1mm}\forall d \in T(x^{*},S).$ for $f \in C^{1}$ and $x \in S$
 
+here d is from Tangent Cone, When the set is convex the Tangent Cone contains all the directions including limiting direction which grazes the boundary (we cannot move further in that direction) of the set.\\
+So, for any $y \in S$ entire $ y-x^*$ segment will be in the Tangent Cone \\
 
+$$\:\nabla f(x^{*})^\top(y-x^{*}) \in T(x^{*},S)  \; \forall \;y\in S \iff x^* \text{ is a global minimum}$$
+
+when the set is convex necessary condition for existance of local minima will be sufficient for finding the global minima.\\
+
+\subsubsection{Finding Tangent Cone}
+
+Consider a optimisation problem 
+\begin{center}
+    Minimize $f(x)$\\
+    subject to $ g(x) = x^{2}_{1}+x^{2}_2-r^{2}$\\$x\geq0$ 
+\end{center}
+
+Tangent cone is given by 
+$$ \{\,d\mid \nabla g(x^*)^\mathsf{T}d\leq 0 \}$$
+
+If $x^{*}$ is in interior of the set then tangent cone is entire space $\mathbb{R}^n$\\
+
+In the above case there was only one constraint so it is easy obtain the tangent cone. Consider the following optimisation problem 
+\begin{center}
+	minimize $f(x)$\\
+	subject to $$S = \{\,x\mid g_{i}(x)\leq 0 , i = 1,2,...m\}$$
+\end{center}
+
+let $$S = \cap^{m}_{i=1}S_i$$ where $$S_i = \{ x\mid g_i(x)\leq 0\}$$
+we want $T(x^*:S)$ we have $T(x^*:S_i)$
+we can say $$T(x^*:S) \subseteq \cap_{i=1}^{m}T(x:S_i)$$
+$$T(x^*:S)\nsupseteq \cap_{i=1}^{m}T(x:S_i)$$
+
+suppose 
+\begin{center}
+minimize $f(x)$\\
+subject to $$S = \{\,x\mid g_{i}(x)\leq 0 , i = 1,2,...m\}$$\\
+$h_j(x) = 0, , j = 1,2,...p$
+\end{center}
+same equality constraints can be represented as $\{ x \mid h^{2}_{j}(x) = 0\}$ in such representation $\nabla h_j(x)$ doesnot give true normal. This might happen because of Linear Dependency of Normals. Constraints Qualification makes sure that Normals are Linearly Independent.
+
+\subsection{Constraint Qualification (CQ)}
+Let $S = \{\,x\mid g_{i}(x)\leq 0 , i = 1,2,...m\},g \in C^{1}  $ we say that a constraint qualification is satisfied at $x^{*}\in S$ if 
+
+$$ T(x^{*},S) = \{d \mid \nabla g_i(x^*)^Td \leq 0\, \forall\, i \in I(x^*)\}$$
+
+active constraints are such that 
+$I(x^*)=\{i\mid g_i(x^*)=0\}$
+for other constraints $T(x^*:S)= \mathbb{R}^n$
+
+\section{Farkas Lemma}
+\begin{lemma}
+Let $A\in\mathbb{R}^{m x n}, c\in \mathbb{R}^{n}$ Then the following statements are equivalent \\
+(1) $\forall x \in \mathbb{R}^{n} \text{such that }Ax \leq 0 $, we have $c^{T}x\leq 0 $\\
+(2) $ \exists \, \lambda \geq 0 \in \mathbb{R}^{m}$ such that $A^{T}\lambda = C $ 
+\end{lemma}
 \begin{proof}
-(Sufficiency)\\
-Suppose that $x^{*} \in S$ satisfies
-\begin{equation}\label{eq1}
-    \nabla f(x^{*})^\top(y-x^{*}) \geqslant 0,  \; \forall \;  y \in S.
-\end{equation}
-By the Lemma 14.1,
-\begin{equation}\label{eq2}
-    f(y) \geqslant f(x^{*})+\nabla f(x^{*})^\top(y-x^{*}), \; \forall \;  x^{*},y.
-\end{equation}
-Combining \eqref{eq1} and \eqref{eq2} gives
-\begin{equation}\label{eq3}
-    f(y) \geqslant f(x^{*}),  \; \forall \; y \in S.
-\end{equation}
-This implies that $x^{*}$ is a global minima.\\\\
-(Necessity)\\
-Let $x^{*}$ be a global minima, which implies $f(x^{*}) \leqslant f(y), \forall \; y \in S$. Suppose $\nabla f(x^{*})^{\top}(y-x^{*}) < 0$, for some $y \in S$.\\
-Let $z(t)=x^{*}+t(y-x^{*})$. We will show that $f(z(t))<f(x^{*})$ for small enough $t$.\\
-Consider\\
-\begin{equation}\label{eq4}
-\frac{f(z(t))-f(x^{*})}{t} = \frac{f(x^{*}+t(y-x^{*}))-f(x^{*})}{t}
-\end{equation}
-Taking limit as $t \rightarrow 0$ gives,
-\begin{equation}\label{eq5}
-\begin{split}
-\lim_{t\to 0}\frac{f(x^{*}+t(y-x^{*}))-f(x^{*})}{t} &= \nabla f(x^{*})^{\top}(y-x^{*})\\
-&< 0
-\end{split}
-\end{equation}
-from initial assumption. Hence, there exits $t$ small enough such that $f(z(t))<f(x^{*})$. But this contradicts that $x^{*}$ is a global minima.
-Therefore, $\nabla f(x^{*})^{\top}(y-x^{*}) \geqslant 0,  \; \forall \; y \in S$.
-\end{proof}
+	consider  $$max c^{T}x $$ $$ \text{subject to } Ax \leq 0$$ Dual of this can be given as $$min 0 $$ $$ \text{subject to }A^{T}\lambda = c$$  $$\text{           }\lambda \geq 0$$
 
-\begin{remark}
-~\begin{enumerate}
-  \item Geometrically, the above condition imposes that gradient of the function $f$ at $x^{*}$ should make an acute angle with vector $(y-x^{*}), \; \forall \; y \in S$.
-  \item If $f$ is $C^{1}$ and convex function and $x^{*}$ satisfies $\nabla f(x^{*})^{\top}(y-x^{*}) \geqslant 0,  \; \forall \; y \in S$, then $x^{*}$ is global minima over $S$.
-  \item If $S$ is convex set, $f$ is $C^{1}$ and $x^{*}$ is a local minima, then $\nabla f(x^{*})^{\top}(y-x^{*}) \geqslant 0,  \; \forall \;y \in S$.
-  \item In particular, if $S=\mathbb{R}^{n}$ and $x^{*}$ is local minima, then $\nabla f(x^{*})=0$.
-\end{enumerate}
-\end{remark}
-
-\section{Tangent Cone}
-
-
-\subsection{A more relaxed necessary condition for local minima over non-convex set $S$}
-Before we state the next theorem, we provide some preliminary background regarding the $O(t)$ and $o(t)$ notations.\par
-Consider two sequences $\{a_{k}\}$ and $\{b_{k}\}$. We know that  $\lim_{k\to\infty} \frac{a_{k}}{b_{k}} = L \in (0,\infty) \implies$ For large enough $k$, $\frac{a_{k}}{b_{k}} \approx L $, i.e., $a_{k} = Lb_{k} + o(b_{k}) \implies \frac{a_{k}}{b_{k}} = L + \frac{o(b_{k})}{b_{k}} $. Thus, for $\lim_{k\to\infty} \frac{a_{k}}{b_{k}} = L \in (0,\infty)$ to even hold in the first place, we must have $\frac{o(b_{k})}{b_{k}} \downarrow 0$ as $b_{k} \downarrow 0 $.\par
-Note that $o(t) := $ term such that $\frac{o(t)}{t} \rightarrow 0$ as $t \rightarrow 0$ and $O(t) := $ term such that $\frac{O(t)}{t} \rightarrow$ some finite constant $\neq 0$ as $t \rightarrow 0$. With slight abuse of notation, $o(1):=$ a quantity $\rightarrow 0$ as $t \rightarrow 0$ and $O(1):=$ a quantity $\rightarrow$ some constant $\neq 0$ as $t \rightarrow 0$.\par
-With some simple calculations, we can show that: $o(t) \times o(t) \leqslant o(t)$, $o(t) \times O(t) = o(t)$, $O(t) \times O(t) = O(t^2)$. So also, $o(t) + o(t) = o(t)$, $o(t) + O(t) = O(t)$, $O(t) + O(t) = O(t)$.\par
-With this background, we now come to the main statement of the theorem.
-
-
-\begin{proof}
-Suppose not, i.e., $\exists \hspace{1mm} d \in T(x^{*},S)$ such that $\nabla f(x^{*})^{\top}d < 0$. $\exists \hspace{1mm} \{x_{k}\} \rightarrow x^{*}$ and $t_{k} \downarrow 0$ such that $t_{k}d = (x_{k} - x^{*}) + o(t_{k})$. Rearranging the terms, we get, $x_{k} = x^{*} + t_{k}d + o(t_{k}) $. Recall Taylor's theorem:\\
-$f(x+p) = f(x) + \nabla f(x+tp)^{\top}p$ for some $t \in (0,1)$. We thus obtain:
-\begin{equation*}
-f(x_{k}) = f(x^{*} +  t_{k}d + o(t_{k}))=   f(x^{*})+  \nabla f(x^{*} + \delta( t_{k}d + o(t_{k})))^{\top}(t_{k}d + o(t_{k})), \hspace{1mm} \textrm {where} \hspace{1mm} \delta \in (0,1).
-\end{equation*}
-Note that, as $k \rightarrow \infty$, $t_{k} \downarrow 0$, hence the $\delta(.)$ term in $\nabla f(.)$ vanishes. This leaves us with $\nabla f(x^{*})$, which is in fact $O(1)$. Since $O(1) \times o(t_{k}) = o(t_{k})$, we get
- $f(x_{k}) = f(x^{*})+  \nabla f(x^{*} + \delta( t_{k}d + o(t_{k})))^{\top}t_{k}d + o(t_{k}) $. This can be written as 
- $f(x_{k}) = f(x^{*}) + \nabla f(x^{*})^{\top}t_{k}d + \Big[\nabla f(x^{*} + \delta( t_{k}d + o(t_{k}))) - \nabla f(x^{*}) \Big]^{\top}t_{k}d + o(t_{k})$. Once again notice that the term $[.]$ vanishes as $t_{k} \downarrow 0$, and therefore, $[.] t_{k}d$ becomes $o(t_{k})$.\par
- So, we are finally left with:
- \begin{equation*}
- f(x_{k}) = f(x^{*}) + \nabla f(x^{*})^{\top}t_{k}d + o(t_{k}) = f(x^{*}) + t_{k}\bigg[\nabla f(x^{*})^{\top}d + \frac{o(t_{k})}{t_{k}}\bigg].     
- \end{equation*}
-We know that $ \frac{o(t_{k})}{t_{k}}\downarrow 0$ as $t_{k} \downarrow 0$. Also, we started our proof with the assumption that $\nabla f(x^{*})^{\top}d < 0$. This makes the term \bigg($t_{k}\bigg[\nabla f(x^{*})^{\top}d + \frac{o(t_{k})}{t_{k}}\bigg]\bigg) < 0$ as $t_{k} \downarrow 0$, which in turn implies that for large $k$, $f(x_k) < f(x^*)$. This is contradictory to the fact of $x^*$ being the local minimum. Hence, our initial assumption was wrong and indeed $\nabla f(x^{*})^{\top}d \geqslant 0, \hspace{1mm}\forall d \in T(x^{*},S)$.
+(1) implies optimal value of primal is $0$ which again, implies dual is feasible which implies (2)\\
+(2) implies dual is feasible which inturn implies optimal value of dual is 0 which means primal is feasible there by optimal value of primal is 0 which implies (1)\\
 \end{proof}
 
 
+\section{Karush-kuhn-Tucker Conditions}
+\begin{theorem}
+Consider the problem $f,\,g_1,...,g_m \in C^{1}$ 
+$$max f(x) $$
+$$ g_i(x) \leq 0 \, i=1,...,m $$
+Let $x^*$ be a local maximum and suppose that Constraint Qualification is satisfied at $x^*$. Then $ \exists \, \lambda_1^*,\lambda_2^*,...,\lambda_m^* \geq 0 $ such that \begin{equation}
+\nabla f(x^*) = \sum_{n=1}^{m} \lambda_i^* \nabla g_i(x^*)
+\end{equation}
+\begin{equation}
+\lambda_i^*g_i(x^*) = 0 \ \forall i = 1,2,...,m 
+\end{equation}
+ $  \lambda_1^*,\lambda_2^*,...,\lambda_m^* $ are Lagrange multipliers
+\end{theorem}
+\begin{proof}
+$x^* $ is a local max\\
+$$\nabla f(x^*)^{T}d \leq 0 \forall \  d\in T(x^*:S)$$
+but since CQ holds at $x^*$
+$$T(x^*:S) = \{ d \mid \nabla g_i(x^*)^{T}d \leq 0\  \forall\  i \in I(x^*)\}$$
+By Farkas Lemma $\exists \lambda_j, j \in I(x^*),\lambda_j \geq 0 $ such that $\nabla f(x^*) = \sum_{j\in I(x^*)} \lambda_j^* \nabla g_i(x^*)$\\
+$$ =\sum_{j=1}^m \lambda_j^* \nabla g_i(x^*)\text{ and }\lambda_j^* = 0 , j\notin I(x^*)$$
+\end{proof}
+
+This Conditions are further generalised when equality constraints are added along with inequality constraints in next lecture.
 %\section*{References}
 
 \end{document}
