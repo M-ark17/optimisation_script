@@ -1,0 +1,203 @@
+%% The lines that are not written within % .. % are not to be tampered with!!
+
+\documentclass[twoside]{article}
+\setlength{\oddsidemargin}{0.25 in}
+\setlength{\evensidemargin}{-0.25 in}
+\setlength{\topmargin}{-0.6 in}
+\setlength{\textwidth}{6.5 in}
+\setlength{\textheight}{8.5 in}
+\setlength{\headsep}{0.75 in}
+\setlength{\parindent}{0 in}
+\setlength{\parskip}{0.1 in}
+
+%
+% ADD PACKAGES here:
+%
+
+\usepackage{amsmath,amsfonts,graphicx,amsthm,amssymb}
+
+
+\newcounter{lecnum}
+\renewcommand{\thepage}{\thelecnum-\arabic{page}}
+\renewcommand{\thesection}{\thelecnum.\arabic{section}}
+\renewcommand{\theequation}{\thelecnum.\arabic{equation}}
+\renewcommand{\thefigure}{\thelecnum.\arabic{figure}}
+\renewcommand{\thetable}{\thelecnum.\arabic{table}}
+
+
+\newcommand{\lecture}[4]{
+   \pagestyle{myheadings}
+   \thispagestyle{plain}
+   \newpage
+   \setcounter{lecnum}{#1}
+   \setcounter{page}{1}
+   \noindent
+   \begin{center}
+   \framebox{
+      \vbox{\vspace{2mm}
+    \hbox to 6.28in { {\bf SC 607: Optimization
+		\hfill Spring 2019} }
+       \vspace{4mm}
+       \hbox to 6.28in { {\Large \hfill Lecture #1: #2  \hfill} }
+       \vspace{2mm}
+       \hbox to 6.28in { {\it Instructor: #3 \hfill Scribes: #4} }
+      \vspace{2mm}}
+   }
+   \end{center}
+   \markboth{Lecture #1: #2}{Lecture #1: #2}
+
+   {\bf Note}: {\it LaTeX template courtesy of UC Berkeley EECS dept.}
+
+   {\bf Disclaimer}: {\it These notes have not been subjected to the
+   usual scrutiny reserved for formal publications.  They may be distributed
+   outside this class only with the permission of the Instructor.}
+   \vspace*{4mm}
+}
+
+
+
+\renewcommand{\cite}[1]{[#1]}
+\def\beginrefs{\begin{list}%
+        {[\arabic{equation}]}{\usecounter{equation}
+         \setlength{\leftmargin}{2.0truecm}\setlength{\labelsep}{0.4truecm}%
+         \setlength{\labelwidth}{1.6truecm}}}
+\def\endrefs{\end{list}}
+\def\bibentry#1{\item[\hbox{[#1]}]}
+
+%Use this command for a figure; it puts a figure in wherever you want it.
+%usage: \fig{NUMBER}{SPACE-IN-INCHES}{CAPTION}
+%This is for your help while typing the notes
+\newcommand{\fig}[3]{
+			\vspace{#2}
+			\begin{center}
+			Figure \thelecnum.#1:~#3
+			\end{center}
+	}
+% Use these for theorems, lemmas, proofs, etc. 
+% See how they are used, below 
+\newtheorem{theorem}{Theorem}[lecnum]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem*{remark}{Remarks}
+\newtheorem{define}{Definintion}[lecnum]
+
+\newcommand\E{\mathbb{E}}
+
+\begin{document}
+
+\lecture{14}{March 5 2019}{Ankur A. Kulkarni}{Irina Merin Baby, Sushmita Hoskeri}%In place of scribe-name, write down your names or your group names
+
+\section{Review}
+In the previous lecture, convex function and its properties were introduced. Let us recall some of the concepts that were discussed.
+\begin{define}
+On a convex set $S$, a function $f:S\rightarrow \mathbb{R}$ is said to be convex if $\:\forall \: x,y \in S, \: \lambda \in [0,1],$
+\[f(\lambda x + (1-\lambda)y) \leqslant \lambda f(x) + (1-\lambda)f(y).\]
+\end{define}
+\begin{lemma}
+Suppose $f:\mathbb{R}^{n} \rightarrow \mathbb{R}$ is differentiable, then $f$ is convex if and only if
+\[f(y) \geqslant f(x) + \nabla f(x)^\top (y-x), \;\forall \: x,y.\]
+\end{lemma}
+\begin{theorem}
+If $f$ is convex function and $S$ is convex set (convex optimization problem), then every local minima is a global minima.
+\end{theorem}
+
+\section{Introduction}
+In this lecture, we will derive a necessary and sufficient condition for $x^{*}$ to be a minimizer for convex optimization problem. We will also find a condition on local minimizer $x^{*}$, where $x^{*}$ is constrained over the tangent cone set $T(x^{*}, S)$, where $S$ need not be convex. 
+
+\section{Minimizer of Convex Optimiztion Problem}
+\begin{theorem}
+Let $S$ be a convex set and let $f$ be a continuously differentiable ($C^{1}$) convex function. Consider the following convex optimization problem:
+%\begin{center}
+%    Minimize $f(x)$\\
+%    subject to $x\in S$ 
+%\end{center}
+\begin{align}
+    \minimize \; f(x),
+    subject to x\in S
+\end{align}
+Then $x^{*}$ is minimizer if and only if $\:\nabla f(x^{*})^\top(y-x^{*}) \geqslant 0$, for all $y\in S$.
+\end{theorem}
+
+\begin{proof}
+(Sufficiency)\\
+Suppose that $x^{*} \in S$ satisfies
+\begin{equation}\label{eq1}
+    \nabla f(x^{*})^\top(y-x^{*}) \geqslant 0,  \; \forall \;  y \in S.
+\end{equation}
+By the Lemma 14.1,
+\begin{equation}\label{eq2}
+    f(y) \geqslant f(x^{*})+\nabla f(x^{*})^\top(y-x^{*}), \; \forall \;  x^{*},y.
+\end{equation}
+Combining \eqref{eq1} and \eqref{eq2} gives
+\begin{equation}\label{eq3}
+    f(y) \geqslant f(x^{*}),  \; \forall \; y \in S.
+\end{equation}
+This implies that $x^{*}$ is a global minima.\\\\
+(Necessity)\\
+Let $x^{*}$ be a global minima, which implies $f(x^{*}) \leqslant f(y), \forall \; y \in S$. Suppose $\nabla f(x^{*})^{\top}(y-x^{*}) < 0$, for some $y \in S$.\\
+Let $z(t)=x^{*}+t(y-x^{*})$. We will show that $f(z(t))<f(x^{*})$ for small enough $t$.\\
+Consider\\
+\begin{equation}\label{eq4}
+\frac{f(z(t))-f(x^{*})}{t} = \frac{f(x^{*}+t(y-x^{*}))-f(x^{*})}{t}
+\end{equation}
+Taking limit as $t \rightarrow 0$ gives,
+\begin{equation}\label{eq5}
+\begin{split}
+\lim_{t\to 0}\frac{f(x^{*}+t(y-x^{*}))-f(x^{*})}{t} &= \nabla f(x^{*})^{\top}(y-x^{*})\\
+&< 0
+\end{split}
+\end{equation}
+from initial assumption. Hence, there exits $t$ small enough such that $f(z(t))<f(x^{*})$. But this contradicts that $x^{*}$ is a global minima.
+Therefore, $\nabla f(x^{*})^{\top}(y-x^{*}) \geqslant 0,  \; \forall \; y \in S$.
+\end{proof}
+
+\begin{remark}
+~\begin{enumerate}
+  \item Geometrically, the above condition imposes that gradient of the function $f$ at $x^{*}$ should make an acute angle with vector $(y-x^{*}), \; \forall \; y \in S$.
+  \item If $f$ is $C^{1}$ and convex function and $x^{*}$ satisfies $\nabla f(x^{*})^{\top}(y-x^{*}) \geqslant 0,  \; \forall \; y \in S$, then $x^{*}$ is global minima over $S$.
+  \item If $S$ is convex set, $f$ is $C^{1}$ and $x^{*}$ is a local minima, then $\nabla f(x^{*})^{\top}(y-x^{*}) \geqslant 0,  \; \forall \;y \in S$.
+  \item In particular, if $S=\mathbb{R}^{n}$ and $x^{*}$ is local minima, then $\nabla f(x^{*})=0$.
+\end{enumerate}
+\end{remark}
+
+\section{Tangent Cone}
+For $x^{*} \in S$, the tangent cone $T(x^{*};S)$ is defined as:
+\begin{equation}\label{eq6}
+T(x^{*},S) := \bigg\{d\;\bigg|\; \exists\;{x_{k}}\subseteq S: {x_{k}}\rightarrow x^{*} \; \& \; t_k\downarrow 0\;s.t.\;d=\lim_{k \to \inf} \frac{x_k-x^{*}}{t_k}\bigg\}.
+\end{equation}
+Tangent cone of a set captures the precise shape of the set.
+
+\subsection{A more relaxed necessary condition for local minima over non-convex set $S$}
+Before we state the next theorem, we provide some preliminary background regarding the $O(t)$ and $o(t)$ notations.\par
+Consider two sequences $\{a_{k}\}$ and $\{b_{k}\}$. We know that  $\lim_{k\to\infty} \frac{a_{k}}{b_{k}} = L \in (0,\infty) \implies$ For large enough $k$, $\frac{a_{k}}{b_{k}} \approx L $, i.e., $a_{k} = Lb_{k} + o(b_{k}) \implies \frac{a_{k}}{b_{k}} = L + \frac{o(b_{k})}{b_{k}} $. Thus, for $\lim_{k\to\infty} \frac{a_{k}}{b_{k}} = L \in (0,\infty)$ to even hold in the first place, we must have $\frac{o(b_{k})}{b_{k}} \downarrow 0$ as $b_{k} \downarrow 0 $.\par
+Note that $o(t) := $ term such that $\frac{o(t)}{t} \rightarrow 0$ as $t \rightarrow 0$ and $O(t) := $ term such that $\frac{O(t)}{t} \rightarrow$ some finite constant $\neq 0$ as $t \rightarrow 0$. With slight abuse of notation, $o(1):=$ a quantity $\rightarrow 0$ as $t \rightarrow 0$ and $O(1):=$ a quantity $\rightarrow$ some constant $\neq 0$ as $t \rightarrow 0$.\par
+With some simple calculations, we can show that: $o(t) \times o(t) \leqslant o(t)$, $o(t) \times O(t) = o(t)$, $O(t) \times O(t) = O(t^2)$. So also, $o(t) + o(t) = o(t)$, $o(t) + O(t) = O(t)$, $O(t) + O(t) = O(t)$.\par
+With this background, we now come to the main statement of the theorem.
+
+\begin{theorem}
+Consider the optimization problem:
+\begin{center}
+    Minimize $f(x)$\\
+    subject to $x\in S$ 
+\end{center}
+where $f \in C^{1}$. If $x^{*}$ is a local minimum, then $\nabla f(x^{*})^{\top}d \geqslant 0, \hspace{1mm}\forall d \in T(x^{*},S).$
+\end{theorem}
+\begin{proof}
+Suppose not, i.e., $\exists \hspace{1mm} d \in T(x^{*},S)$ such that $\nabla f(x^{*})^{\top}d < 0$. $\exists \hspace{1mm} \{x_{k}\} \rightarrow x^{*}$ and $t_{k} \downarrow 0$ such that $t_{k}d = (x_{k} - x^{*}) + o(t_{k})$. Rearranging the terms, we get, $x_{k} = x^{*} + t_{k}d + o(t_{k}) $. Recall Taylor's theorem:\\
+$f(x+p) = f(x) + \nabla f(x+tp)^{\top}p$ for some $t \in (0,1)$. We thus obtain:
+\begin{equation*}
+f(x_{k}) = f(x^{*} +  t_{k}d + o(t_{k}))=   f(x^{*})+  \nabla f(x^{*} + \delta( t_{k}d + o(t_{k})))^{\top}(t_{k}d + o(t_{k})), \hspace{1mm} \textrm {where} \hspace{1mm} \delta \in (0,1).
+\end{equation*}
+Note that, as $k \rightarrow \infty$, $t_{k} \downarrow 0$, hence the $\delta(.)$ term in $\nabla f(.)$ vanishes. This leaves us with $\nabla f(x^{*})$, which is in fact $O(1)$. Since $O(1) \times o(t_{k}) = o(t_{k})$, we get
+ $f(x_{k}) = f(x^{*})+  \nabla f(x^{*} + \delta( t_{k}d + o(t_{k})))^{\top}t_{k}d + o(t_{k}) $. This can be written as 
+ $f(x_{k}) = f(x^{*}) + \nabla f(x^{*})^{\top}t_{k}d + \Big[\nabla f(x^{*} + \delta( t_{k}d + o(t_{k}))) - \nabla f(x^{*}) \Big]^{\top}t_{k}d + o(t_{k})$. Once again notice that the term $[.]$ vanishes as $t_{k} \downarrow 0$, and therefore, $[.] t_{k}d$ becomes $o(t_{k})$.\par
+ So, we are finally left with:
+ \begin{equation*}
+ f(x_{k}) = f(x^{*}) + \nabla f(x^{*})^{\top}t_{k}d + o(t_{k}) = f(x^{*}) + t_{k}\bigg[\nabla f(x^{*})^{\top}d + \frac{o(t_{k})}{t_{k}}\bigg].     
+ \end{equation*}
+We know that $ \frac{o(t_{k})}{t_{k}}\downarrow 0$ as $t_{k} \downarrow 0$. Also, we started our proof with the assumption that $\nabla f(x^{*})^{\top}d < 0$. This makes the term \bigg($t_{k}\bigg[\nabla f(x^{*})^{\top}d + \frac{o(t_{k})}{t_{k}}\bigg]\bigg) < 0$ as $t_{k} \downarrow 0$, which in turn implies that for large $k$, $f(x_k) < f(x^*)$. This is contradictory to the fact of $x^*$ being the local minimum. Hence, our initial assumption was wrong and indeed $\nabla f(x^{*})^{\top}d \geqslant 0, \hspace{1mm}\forall d \in T(x^{*},S)$.
+\end{proof}
+
+
+%\section*{References}
+
+\end{document}
