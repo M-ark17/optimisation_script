@@ -84,26 +84,10 @@
 
 \begin{document}
 
-\lecture{14}{March 5 2019}{Ankur A. Kulkarni}{Irina Merin Baby, Sushmita Hoskeri}%In place of scribe-name, write down your names or your group names
+\lecture{15}{March 8 2019}{Ankur A. Kulkarni}{Arun Kumar Miryala, Anuraag Tummanapally}%In place of scribe-name, write down your names or your group names
 
 \section{Review}
-In the previous lecture, convex function and its properties were introduced. Let us recall some of the concepts that were discussed.
-\begin{define}
-On a convex set $S$, a function $f:S\rightarrow \mathbb{R}$ is said to be convex if $\:\forall \: x,y \in S, \: \lambda \in [0,1],$
-\[f(\lambda x + (1-\lambda)y) \leqslant \lambda f(x) + (1-\lambda)f(y).\]
-\end{define}
-\begin{lemma}
-Suppose $f:\mathbb{R}^{n} \rightarrow \mathbb{R}$ is differentiable, then $f$ is convex if and only if
-\[f(y) \geqslant f(x) + \nabla f(x)^\top (y-x), \;\forall \: x,y.\]
-\end{lemma}
-\begin{theorem}
-If $f$ is convex function and $S$ is convex set (convex optimization problem), then every local minima is a global minima.
-\end{theorem}
-
-\section{Introduction}
-In this lecture, we will derive a necessary and sufficient condition for $x^{*}$ to be a minimizer for convex optimization problem. We will also find a condition on local minimizer $x^{*}$, where $x^{*}$ is constrained over the tangent cone set $T(x^{*}, S)$, where $S$ need not be convex. 
-
-\section{Minimizer of Convex Optimiztion Problem}
+In the previous lecture, a necessary and sufficient condition for $x^{*}$ to be a minimizer for convex optimization problem is derived. A condition on local minimizer $x^{*}$, where $x^{*}$ is constrained over the tangent cone set $T(x^{*}, S)$,  $S$ need not be convex is found. Let us recall some of the concepts that were discussed.
 \begin{theorem}
 Let $S$ be a convex set and let $f$ be a continuously differentiable ($C^{1}$) convex function. Consider the following convex optimization problem:
 %\begin{center}
@@ -111,11 +95,34 @@ Let $S$ be a convex set and let $f$ be a continuously differentiable ($C^{1}$) c
 %    subject to $x\in S$ 
 %\end{center}
 \begin{align}
-    \minimize \; f(x),
-    subject to x\in S
+    \text{minimize }  &\null f(x),\\
+    \text{subject to } &\null x\in S
 \end{align}
 Then $x^{*}$ is minimizer if and only if $\:\nabla f(x^{*})^\top(y-x^{*}) \geqslant 0$, for all $y\in S$.
 \end{theorem}
+\begin{define}
+For $x^{*} \in S$, the tangent cone $T(x^{*};S)$ is defined as:
+\begin{equation}\label{eq6}
+T(x^{*},S) := \bigg\{d\;\bigg|\; \exists\;{x_{k}}\subseteq S: {x_{k}}\rightarrow x^{*} \; \& \; t_k\downarrow 0\;s.t.\;d=\lim_{k \to \inf} \frac{x_k-x^{*}}{t_k}\bigg\}.
+\end{equation}
+Tangent cone of a set captures the precise shape of the set.
+\end{define}
+\begin{theorem}
+Consider the optimization problem:
+\begin{center}
+    Minimize $f(x)$\\
+    subject to $x\in S$ 
+\end{center}
+where $f \in C^{1}$. If $x^{*}$ is a local minimum, then $\nabla f(x^{*})^{\top}d \geqslant 0, \hspace{1mm}\forall d \in T(x^{*},S).$
+\end{theorem}
+
+
+
+\section{Introduction}
+In this lecture, we will derive a necessary and sufficient condition for $x^{*}$ to be a minimizer for convex optimization problem and also find a condition on local minimizer $x^{*}$, where $x^{*}$ is constrained over the tangent cone set $T(x^{*}, S)$, where $S$ need not be convex. 
+
+\section{Minimizer of Convex Optimiztion Problem}
+
 
 \begin{proof}
 (Sufficiency)\\
@@ -160,11 +167,7 @@ Therefore, $\nabla f(x^{*})^{\top}(y-x^{*}) \geqslant 0,  \; \forall \; y \in S$
 \end{remark}
 
 \section{Tangent Cone}
-For $x^{*} \in S$, the tangent cone $T(x^{*};S)$ is defined as:
-\begin{equation}\label{eq6}
-T(x^{*},S) := \bigg\{d\;\bigg|\; \exists\;{x_{k}}\subseteq S: {x_{k}}\rightarrow x^{*} \; \& \; t_k\downarrow 0\;s.t.\;d=\lim_{k \to \inf} \frac{x_k-x^{*}}{t_k}\bigg\}.
-\end{equation}
-Tangent cone of a set captures the precise shape of the set.
+
 
 \subsection{A more relaxed necessary condition for local minima over non-convex set $S$}
 Before we state the next theorem, we provide some preliminary background regarding the $O(t)$ and $o(t)$ notations.\par
@@ -173,14 +176,7 @@ Note that $o(t) := $ term such that $\frac{o(t)}{t} \rightarrow 0$ as $t \righta
 With some simple calculations, we can show that: $o(t) \times o(t) \leqslant o(t)$, $o(t) \times O(t) = o(t)$, $O(t) \times O(t) = O(t^2)$. So also, $o(t) + o(t) = o(t)$, $o(t) + O(t) = O(t)$, $O(t) + O(t) = O(t)$.\par
 With this background, we now come to the main statement of the theorem.
 
-\begin{theorem}
-Consider the optimization problem:
-\begin{center}
-    Minimize $f(x)$\\
-    subject to $x\in S$ 
-\end{center}
-where $f \in C^{1}$. If $x^{*}$ is a local minimum, then $\nabla f(x^{*})^{\top}d \geqslant 0, \hspace{1mm}\forall d \in T(x^{*},S).$
-\end{theorem}
+
 \begin{proof}
 Suppose not, i.e., $\exists \hspace{1mm} d \in T(x^{*},S)$ such that $\nabla f(x^{*})^{\top}d < 0$. $\exists \hspace{1mm} \{x_{k}\} \rightarrow x^{*}$ and $t_{k} \downarrow 0$ such that $t_{k}d = (x_{k} - x^{*}) + o(t_{k})$. Rearranging the terms, we get, $x_{k} = x^{*} + t_{k}d + o(t_{k}) $. Recall Taylor's theorem:\\
 $f(x+p) = f(x) + \nabla f(x+tp)^{\top}p$ for some $t \in (0,1)$. We thus obtain:
