@@ -15,7 +15,7 @@
 %
 
 \usepackage{amsmath,amsfonts,graphicx,amsthm,amssymb}
-
+\usepackage{subfig}
 
 \newcounter{lecnum}
 \renewcommand{\thepage}{\thelecnum-\arabic{page}}
@@ -87,13 +87,9 @@
 \lecture{15}{March 8 2019}{Ankur A. Kulkarni}{Arun Kumar Miryala, Anuraag Tummanapally}%In place of scribe-name, write down your names or your group names
 
 \section{Review}
-In the previous lecture, a necessary and sufficient condition for $x^{*}$ to be a minimizer for convex optimization problem is derived. A condition on local minimizer $x^{*}$, where $x^{*}$ is constrained over the tangent cone set $T(x^{*}, S)$,  $S$ need not be convex is found. Let us recall some of the concepts that were discussed.
+In the previous lecture, a necessary and sufficient condition for $x^{*}$ to be a minimizer for convex optimization problem was derived. A condition on local minimizer $x^{*}$, where $x^{*}$ is constrained over the tangent cone set $T(x^{*}, S)$,  $S$ need not be convex is found. Let us recall some of the concepts that were discussed.
 \begin{theorem}
 Let $S$ be a convex set and let $f$ be a continuously differentiable ($C^{1}$) convex function. Consider the following convex optimization problem:
-%\begin{center}
-%    Minimize $f(x)$\\
-%    subject to $x\in S$ 
-%\end{center}
 \begin{align}
     \text{minimize }  &\null f(x)\\
     \text{subject to } &\null x\in S
@@ -107,6 +103,22 @@ T(x^{*},S) := \bigg\{d\;\bigg|\; \exists\;{x_{k}}\subseteq S: {x_{k}}\rightarrow
 \end{equation}
 Tangent cone of a set captures the precise shape of the set.
 \end{define}
+
+Example: 
+
+In Fig \ref{fig:example}a, the tangent cone is just a straight line,and in Fig \ref{fig:example}b, the tangent cone at $x$ is entire $\mathbb{R}^2$
+
+If $x \in \overset{o}{S}$, T(x,S) = $\mathbb{R}^2$
+\begin{figure}[h]
+%\includegraphics[scale=0.5]{images/pic1.png}
+	\centering
+    \subfloat[]{{\includegraphics[width=5cm]{images/pic1.png} }}
+    \qquad
+    \subfloat[]{{\includegraphics[width=5cm]{images/pic2.png} }}
+    \caption{Tangent cone examples}
+    \label{fig:example}
+\end{figure}
+
 \begin{theorem}
 Consider the optimization problem:
 \begin{center}
@@ -129,6 +141,12 @@ So, for any $y \in S$ entire $ y-x^*$ segment will be in the Tangent Cone \\
 
 $$\:\nabla f(x^{*})^\top(y-x^{*}) \in T(x^{*},S)  \; \forall \;y\in S \iff x^* \text{ is a global minimum}$$
 
+\begin{figure}[h]
+\center
+\includegraphics[width=10cm]{images/pic3.png}
+\caption{$(y-x^*) \in T(X^*, S)$ when S is convex}
+\end{figure}
+
 when the set is convex necessary condition for existance of local minima will be sufficient for finding the global minima.\\
 
 \subsubsection{Finding Tangent Cone}
@@ -138,6 +156,11 @@ Consider a optimisation problem
     Minimize $f(x)$\\
     subject to $ g(x) = x^{2}_{1}+x^{2}_2-r^{2}$\\$x\geq0$ 
 \end{center}
+
+\begin{figure}[h]
+\center
+\includegraphics[scale=0.35]{images/pic4.png}
+\end{figure}
 
 Tangent cone is given by 
 $$ \{\,d\mid \nabla g(x^*)^\mathsf{T}d\leq 0 \}$$
@@ -150,6 +173,10 @@ In the above case there was only one constraint so it is easy obtain the tangent
 	subject to $$S = \{\,x\mid g_{i}(x)\leq 0 , i = 1,2,...m\}$$
 \end{center}
 
+\begin{figure}[h]
+\center
+\includegraphics[scale=0.25]{images/pic5.png}
+\end{figure}
 let $$S = \cap^{m}_{i=1}S_i$$ where $$S_i = \{ x\mid g_i(x)\leq 0\}$$
 we want $T(x^*:S)$ we have $T(x^*:S_i)$
 we can say $$T(x^*:S) \subseteq \cap_{i=1}^{m}T(x:S_i)$$
@@ -161,7 +188,20 @@ minimize $f(x)$\\
 subject to $$S = \{\,x\mid g_{i}(x)\leq 0 , i = 1,2,...m\}$$\\
 $h_j(x) = 0, , j = 1,2,...p$
 \end{center}
+
+\begin{figure}[h]
+\center
+\includegraphics[scale=0.25]{images/pic6.png}
+\end{figure}
+
+\begin{figure}[h]
+\center
+\includegraphics[scale=0.25]{images/pic7.png}
+\end{figure}
+
 same equality constraints can be represented as $\{ x \mid h^{2}_{j}(x) = 0\}$ in such representation $\nabla h_j(x)$ doesnot give true normal. This might happen because of Linear Dependency of Normals. Constraints Qualification makes sure that Normals are Linearly Independent.
+
+
 
 \subsection{Constraint Qualification (CQ)}
 Let $S = \{\,x\mid g_{i}(x)\leq 0 , i = 1,2,...m\},g \in C^{1}  $ we say that a constraint qualification is satisfied at $x^{*}\in S$ if 
