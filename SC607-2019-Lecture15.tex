@@ -81,7 +81,8 @@
 \newtheorem{define}{Definintion}[lecnum]
 
 \newcommand\E{\mathbb{E}}
-\DeclareMathOperator*{\minimize}{minimize}
+\DeclareMathOperator{\minimize}{minimize}
+\DeclareMathOperator{\subjectto}{subject\ to}
 
 \begin{document}
 
@@ -92,10 +93,13 @@ In the previous lecture, a necessary and sufficient condition for $x^{*}$ to be 
 \begin{theorem}
 Let $S$ be a convex set and let $f$ be a continuously differentiable ($C^{1}$) convex function. Consider the following convex optimization problem:
 
+\begin{equation}
+\begin{aligned}
+& \minimize & f(x)\\
+& \subjectto &x \in S\\
+\end{aligned}
+\end{equation}
 
-\begin{align}
-    \displaystyle{\minimize_{\text{subject to }x\in S} f(x)}
-\end{align}
 Then $x^{*}$ is minimizer if and only if $\:\nabla f(x^{*})^\top(y-x^{*}) \geqslant 0$, for all $y\in S$.
 \end{theorem}
 \begin{define}
@@ -108,9 +112,9 @@ Tangent cone of a set captures the precise shape of the set.
 
 Example: 
 
-In Fig \ref{fig:example}a, the tangent cone is just a straight line,and in Fig \ref{fig:example}b, the tangent cone at $x$ is entire $\mathbb{R}^2$
+In Fig \ref{fig:example}a, the tangent cone is just a straight line, and in Fig \ref{fig:example}b, the tangent cone at $x$ is entire $\mathbb{R}^2$
 
-If $x \in \overset{o}{S}$, T(x,S) = $\mathbb{R}^2$
+If $x \in \overset{o}{S}$, T($x$,S) = $\mathbb{R}^2$
 \begin{figure}[h]
 %\includegraphics[scale=0.5]{images/pic1.png}
 	\centering
@@ -123,9 +127,14 @@ If $x \in \overset{o}{S}$, T(x,S) = $\mathbb{R}^2$
 
 \begin{theorem}
 Consider the optimization problem:
-\begin{center}
-    $\displaystyle{\minimize_{\text{subject to }x\in S} f(x)}$
-\end{center}
+
+\begin{equation}
+\begin{aligned}
+& \minimize & f(x)\\
+& \subjectto &x \in S\\
+\end{aligned}
+\end{equation}
+
 where $f \in C^{1}$. If $x^{*}$ is a local minimum, then $\nabla f(x^{*})^{\top}d \geqslant 0, \hspace{1mm}\forall d \in T(x^{*},S).$
 \end{theorem}
 
@@ -135,10 +144,10 @@ where $f \in C^{1}$. If $x^{*}$ is a local minimum, then $\nabla f(x^{*})^{\top}
 In this lecture, Constraint Qualifications are discussed. Farkas Lemma and Karush kuhn Tucker conditions for an optimisation problem with inequality constraints are proved  
 
 \section{Motivation for need of Constraint Qualification(CQ)}
-From Theorem 15.1 local minima $x^*$ satifies the condition $\nabla f(x^{*})^{\top}d \geqslant 0, \hspace{1mm}\forall d \in T(x^{*},S).$ for $f \in C^{1}$ and $x \in S$
+From Theorem 15.1 local minima $x^*$ satisfies the condition $\nabla f(x^{*})^{\top}d \geqslant 0, \hspace{1mm}\forall d \in T(x^{*},S).$ for $f \in C^{1}$ and $x \in S$
 
-here d is from Tangent Cone, When the set is convex the Tangent Cone contains all the directions including limiting direction which grazes the boundary (we cannot move further in that direction) of the set.\\
-So, for any $y \in S$ entire $ y-x^*$ segment will be in the Tangent Cone \\
+Here \(d\) is from tangent cone, when the set is convex the tangent cone contains all the directions including limiting direction which grazes the boundary (we cannot move further in that direction) of the set.\\
+So, for any $y \in S$ entire $ y-x^*$ segment will be in the tangent cone \\
 
 $$\:\nabla f(x^{*})^\top(y-x^{*}) \in T(x^{*},S)  \; \forall \;y\in S \iff x^* \text{ is a global minimum}$$
 
@@ -148,15 +157,19 @@ $$\:\nabla f(x^{*})^\top(y-x^{*}) \in T(x^{*},S)  \; \forall \;y\in S \iff x^* \
 \caption{$(y-x^*) \in T(X^*, S)$ when S is convex}
 \end{figure}
 
-when the set is convex necessary condition for existance of local minima will be sufficient for finding the global minima.\\
+when the set is convex necessary condition for existence of local minima will be sufficient for finding the global minima.\\
 
 \subsubsection{Finding Tangent Cone}
 
 Consider a optimisation problem 
-\begin{center}
-    Minimize $f(x)$\\
-    subject to $ g(x) = x^{2}_{1}+x^{2}_2-r^{2}$\\$x\geq0$ 
-\end{center}
+
+\begin{equation}
+\begin{aligned}
+& \minimize && f(x) &&&\\
+& \subjectto && g(x) = x^{2}_{1}+x^{2}_2-r^{2}\\
+&&& x \geq 0
+\end{aligned}
+\end{equation}
 
 \begin{figure}[h]
 \center
@@ -164,24 +177,27 @@ Consider a optimisation problem
 \end{figure}
 
 Tangent cone is given by 
-$\{\,d\mid \nabla g(x^*)^\mathsf{T}d\leq 0 \}$
+$ \{\,d\mid \nabla g(x^*)^\mathsf{T}d\leq 0 \}$
 
 If $x^{*}$ is in interior of the set then tangent cone is entire space $\mathbb{R}^n$\\
 
 In the above case there was only one constraint so it is easy obtain the tangent cone. Consider the following optimisation problem 
-\begin{center}
-	minimize $f(x)$\\
-	subject to $$S = \{\,x\mid g_{i}(x)\leq 0 , i = 1,2,...m\}$$
-\end{center}
+
+\begin{equation}
+\begin{aligned}
+& \minimize && f(x)\\
+& \subjectto && S = \{\,x\mid g_{i}(x)\leq 0 , i = 1,2, \ldots, m\}
+\end{aligned}
+\end{equation}
 
 \begin{figure}[h]
 \center
 \includegraphics[scale=0.25]{images/pic5.png}
 \end{figure}
-let $$S = \cap^{m}_{i=1}S_i$$ where $$S_i = \{ x\mid g_i(x)\leq 0\}$$
-we want $T(x^*:S)$ and we have $T(x^*:S_i)$
-we can say $$T(x^*:S) \subseteq \cap_{i=1}^{m}T(x:S_i)$$
-$$T(x^*:S)\nsupseteq \cap_{i=1}^{m}T(x:S_i)$$
+Let $$S = \bigcap^{m}_{i=1}S_i$$ where $$S_i = \{ x\mid g_i(x)\leq 0\}$$
+we want $T(x^*:S)$, and we have $T(x^*:S_i)$
+we can say $$T(x^*:S) \subseteq \bigcap_{i=1}^{m}T(x:S_i)$$
+$$T(x^*:S)\nsupseteq \bigcap_{i=1}^{m}T(x:S_i)$$
 
 suppose 
 \begin{center}
@@ -189,6 +205,14 @@ minimize $f(x)$\\
 subject to $$S = \{\,x\mid g_{i}(x)\leq 0 , i = 1,2,...m\}$$\\
 $h_j(x) = 0, , j = 1,2,...p$
 \end{center}
+
+\begin{equation}
+\begin{aligned}
+& \minimize && f(x)\\
+& \subjectto && S = \{\,x\mid g_{i}(x)\leq 0 , i = 1,2,...m\}\\
+&&& h_j(x) = 0, j = 1,2, \ldots, p
+\end{aligned}
+\end{equation}
 
 \begin{figure}[h]
 \center
@@ -200,7 +224,7 @@ $h_j(x) = 0, , j = 1,2,...p$
 \includegraphics[scale=0.25]{images/pic7.png}
 \end{figure}
 
-same equality constraints can be represented as $\{ x \mid h^{2}_{j}(x) = 0\}$ in such representation $\nabla h_j(x)$ does not give true normal. This might happen because of Linear Dependency of Normals. Constraints Qualification makes sure that normals are linearly independent.
+same equality constraints can be represented as $\{ x \mid h^{2}_{j}(x) = 0\}$ in such representation $\nabla h_j(x)$ does not give true normal. This might happen because of linear dependency of normals. Constraints Qualification makes sure that normals are linearly independent.
 
 
 
@@ -220,7 +244,23 @@ Let $A\in\mathbb{R}^{m x n}, c\in \mathbb{R}^{n}$ Then the following statements 
 (2) $ \exists \, \lambda \geq 0 \in \mathbb{R}^{m}$ such that $A^{T}\lambda = C $ 
 \end{lemma}
 \begin{proof}
-	consider  $$max c^{T}x $$ $$ \text{subject to } Ax \leq 0$$ Dual of this can be given as $$min 0 $$ $$ \text{subject to }A^{T}\lambda = c$$  $$\text{           }\lambda \geq 0$$
+consider  
+\begin{equation*}
+\begin{aligned}
+& \text{maximize} && c^{T}x\\
+& \subjectto && Ax \leq 0\\
+\end{aligned}
+\end{equation*}
+
+Dual of this can be given as 
+
+\begin{equation*}
+\begin{aligned}
+& \minimize && 0\\
+& \subjectto && A^T\lambda = c\\
+&&& \lambda  \geq 0
+\end{aligned}
+\end{equation*}
 
 (1) implies optimal value of primal is $0$ which again, implies dual is feasible which implies (2)\\
 (2) implies dual is feasible which inturn implies optimal value of dual is 0 which means primal is feasible there by optimal value of primal is 0 which implies (1)\\
@@ -230,23 +270,39 @@ Let $A\in\mathbb{R}^{m x n}, c\in \mathbb{R}^{n}$ Then the following statements 
 \section{Karush-kuhn-Tucker Conditions}
 \begin{theorem}
 Consider the problem $f,\,g_1,...,g_m \in C^{1}$ 
-$$max f(x) $$
-$$ g_i(x) \leq 0 \, i=1,...,m $$
-Let $x^*$ be a local maximum and suppose that Constraint Qualification is satisfied at $x^*$. Then $ \exists \, \lambda_1^*,\lambda_2^*,...,\lambda_m^* \geq 0 $ such that \begin{equation}
-\nabla f(x^*) = \sum_{n=1}^{m} \lambda_i^* \nabla g_i(x^*)
-\end{equation}
+
+\begin{equation*}
+\begin{aligned}
+& \text{maximize} && f(x)\\
+& \subjectto && g_i(x) \leq 0,\ i=1, \ldots, m\\
+\end{aligned}
+\end{equation*}
+
+Let $x^*$ be a local maximum and suppose that Constraint Qualification is satisfied at $x^*$.\\
+Then $ \exists \, \lambda_1^*,\lambda_2^*,...,\lambda_m^* \geq 0 $ such that 
+
 \begin{equation}
-\lambda_i^*g_i(x^*) = 0 \ \forall i = 1,2,...,m 
+\begin{aligned}
+\nabla f(x^*) & =& \sum_{n=1}^{m} \lambda_i^* \nabla g_i(x^*)
+\end{aligned}
 \end{equation}
+
+\begin{equation}
+\begin{aligned}
+\lambda_i^*g_i(x^*) & = & 0 \ \forall i = 1,2,...,m 
+\end{aligned}
+\end{equation}
+
  $  \lambda_1^*,\lambda_2^*,...,\lambda_m^* $ are Lagrange multipliers
 \end{theorem}
+
 \begin{proof}
 $x^* $ is a local maxima\\
-$$\nabla f(x^*)^{T}d \leq 0\, \forall \  d\in T(x^*:S)$$
+$$\nabla f(x^*)^{T}d \leq 0,\ \forall \  d\in T(x^*:S)$$
 but since CQ holds at $x^*$
 $$T(x^*:S) = \{ d \mid \nabla g_i(x^*)^{T}d \leq 0\  \forall\  i \in I(x^*)\}$$
 By Farkas Lemma $\exists \lambda_j, j \in I(x^*),\lambda_j \geq 0 $ such that $\nabla f(x^*) = \sum_{j\in I(x^*)} \lambda_j^* \nabla g_i(x^*)$\\
-$$ =\sum_{j=1}^m \lambda_j^* \nabla g_i(x^*)\text{ and }\lambda_j^* = 0 , j\notin I(x^*)$$.
+$$ =\sum_{j=1}^m \lambda_j^* \nabla g_i(x^*)\text{ and }\lambda_j^* = 0 , j\notin I(x^*)$$
 \end{proof}
 
 This conditions are further generalised when equality constraints are added along with inequality constraints in next lecture.
