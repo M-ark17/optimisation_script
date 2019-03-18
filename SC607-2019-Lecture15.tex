@@ -81,6 +81,7 @@
 \newtheorem{define}{Definintion}[lecnum]
 
 \newcommand\E{\mathbb{E}}
+\DeclareMathOperator*{\minimize}{minimize}
 
 \begin{document}
 
@@ -90,9 +91,10 @@
 In the previous lecture, a necessary and sufficient condition for $x^{*}$ to be a minimizer for convex optimization problem was derived. A condition on local minimizer $x^{*}$, where $x^{*}$ is constrained over the tangent cone set $T(x^{*}, S)$,  $S$ need not be convex is found. Let us recall some of the concepts that were discussed.
 \begin{theorem}
 Let $S$ be a convex set and let $f$ be a continuously differentiable ($C^{1}$) convex function. Consider the following convex optimization problem:
+
+
 \begin{align}
-    \text{minimize }  &\null f(x)\\
-    \text{subject to } &\null x\in S
+    \displaystyle{\minimize_{\text{subject to }x\in S} f(x)}
 \end{align}
 Then $x^{*}$ is minimizer if and only if $\:\nabla f(x^{*})^\top(y-x^{*}) \geqslant 0$, for all $y\in S$.
 \end{theorem}
@@ -122,8 +124,7 @@ If $x \in \overset{o}{S}$, T(x,S) = $\mathbb{R}^2$
 \begin{theorem}
 Consider the optimization problem:
 \begin{center}
-    Minimize $f(x)$\\
-    subject to $x\in S$ 
+    $\displaystyle{\minimize_{\text{subject to }x\in S} f(x)}$
 \end{center}
 where $f \in C^{1}$. If $x^{*}$ is a local minimum, then $\nabla f(x^{*})^{\top}d \geqslant 0, \hspace{1mm}\forall d \in T(x^{*},S).$
 \end{theorem}
@@ -163,7 +164,7 @@ Consider a optimisation problem
 \end{figure}
 
 Tangent cone is given by 
-$$ \{\,d\mid \nabla g(x^*)^\mathsf{T}d\leq 0 \}$$
+$\{\,d\mid \nabla g(x^*)^\mathsf{T}d\leq 0 \}$
 
 If $x^{*}$ is in interior of the set then tangent cone is entire space $\mathbb{R}^n$\\
 
@@ -178,7 +179,7 @@ In the above case there was only one constraint so it is easy obtain the tangent
 \includegraphics[scale=0.25]{images/pic5.png}
 \end{figure}
 let $$S = \cap^{m}_{i=1}S_i$$ where $$S_i = \{ x\mid g_i(x)\leq 0\}$$
-we want $T(x^*:S)$ we have $T(x^*:S_i)$
+we want $T(x^*:S)$ and we have $T(x^*:S_i)$
 we can say $$T(x^*:S) \subseteq \cap_{i=1}^{m}T(x:S_i)$$
 $$T(x^*:S)\nsupseteq \cap_{i=1}^{m}T(x:S_i)$$
 
@@ -199,7 +200,7 @@ $h_j(x) = 0, , j = 1,2,...p$
 \includegraphics[scale=0.25]{images/pic7.png}
 \end{figure}
 
-same equality constraints can be represented as $\{ x \mid h^{2}_{j}(x) = 0\}$ in such representation $\nabla h_j(x)$ doesnot give true normal. This might happen because of Linear Dependency of Normals. Constraints Qualification makes sure that Normals are Linearly Independent.
+same equality constraints can be represented as $\{ x \mid h^{2}_{j}(x) = 0\}$ in such representation $\nabla h_j(x)$ does not give true normal. This might happen because of Linear Dependency of Normals. Constraints Qualification makes sure that normals are linearly independent.
 
 
 
@@ -240,15 +241,15 @@ Let $x^*$ be a local maximum and suppose that Constraint Qualification is satisf
  $  \lambda_1^*,\lambda_2^*,...,\lambda_m^* $ are Lagrange multipliers
 \end{theorem}
 \begin{proof}
-$x^* $ is a local max\\
-$$\nabla f(x^*)^{T}d \leq 0 \forall \  d\in T(x^*:S)$$
+$x^* $ is a local maxima\\
+$$\nabla f(x^*)^{T}d \leq 0\, \forall \  d\in T(x^*:S)$$
 but since CQ holds at $x^*$
 $$T(x^*:S) = \{ d \mid \nabla g_i(x^*)^{T}d \leq 0\  \forall\  i \in I(x^*)\}$$
 By Farkas Lemma $\exists \lambda_j, j \in I(x^*),\lambda_j \geq 0 $ such that $\nabla f(x^*) = \sum_{j\in I(x^*)} \lambda_j^* \nabla g_i(x^*)$\\
-$$ =\sum_{j=1}^m \lambda_j^* \nabla g_i(x^*)\text{ and }\lambda_j^* = 0 , j\notin I(x^*)$$
+$$ =\sum_{j=1}^m \lambda_j^* \nabla g_i(x^*)\text{ and }\lambda_j^* = 0 , j\notin I(x^*)$$.
 \end{proof}
 
-This Conditions are further generalised when equality constraints are added along with inequality constraints in next lecture.
+This conditions are further generalised when equality constraints are added along with inequality constraints in next lecture.
 %\section*{References}
 
 \end{document}

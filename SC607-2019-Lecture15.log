@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.3.13)  14 MAR 2019 19:11
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.20)  18 MAR 2019 18:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -167,18 +167,18 @@ Package caption3 Info: TeX engine: e-TeX on input line 67.
 (./SC607-2019-Lecture15.aux)
 \openout1 = `SC607-2019-Lecture15.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 85.
-LaTeX Font Info:    ... okay on input line 85.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 85.
-LaTeX Font Info:    ... okay on input line 85.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 85.
-LaTeX Font Info:    ... okay on input line 85.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 85.
-LaTeX Font Info:    ... okay on input line 85.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 85.
-LaTeX Font Info:    ... okay on input line 85.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 85.
-LaTeX Font Info:    ... okay on input line 85.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 86.
+LaTeX Font Info:    ... okay on input line 86.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 86.
+LaTeX Font Info:    ... okay on input line 86.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 86.
+LaTeX Font Info:    ... okay on input line 86.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 86.
+LaTeX Font Info:    ... okay on input line 86.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 86.
+LaTeX Font Info:    ... okay on input line 86.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 86.
+LaTeX Font Info:    ... okay on input line 86.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -252,12 +252,12 @@ e
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: subfig package v1.3 is loaded.
 Package caption Info: End \AtBeginDocument code.
-LaTeX Font Info:    Try loading font information for U+msa on input line 90.
+LaTeX Font Info:    Try loading font information for U+msa on input line 91.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 90.
+LaTeX Font Info:    Try loading font information for U+msb on input line 91.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -265,12 +265,12 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 <images/pic1.png, id=1, 394.47375pt x 247.92625pt>
 File: images/pic1.png Graphic file (type png)
 <use images/pic1.png>
-Package pdftex.def Info: images/pic1.png  used on input line 115.
+Package pdftex.def Info: images/pic1.png  used on input line 117.
 (pdftex.def)             Requested size: 142.26378pt x 89.41226pt.
 <images/pic2.png, id=3, 403.5075pt x 403.5075pt>
 File: images/pic2.png Graphic file (type png)
 <use images/pic2.png>
-Package pdftex.def Info: images/pic2.png  used on input line 117.
+Package pdftex.def Info: images/pic2.png  used on input line 119.
 (pdftex.def)             Requested size: 142.26378pt x 142.26411pt.
 
 
@@ -279,73 +279,73 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-Underfull \hbox (badness 10000) in paragraph at lines 139--141
+Underfull \hbox (badness 10000) in paragraph at lines 140--142
 
  []
 
-<images/pic3.png, id=22, 1168.365pt x 845.1575pt>
+<images/pic3.png, id=23, 1168.365pt x 845.1575pt>
 File: images/pic3.png Graphic file (type png)
 <use images/pic3.png>
-Package pdftex.def Info: images/pic3.png  used on input line 146.
+Package pdftex.def Info: images/pic3.png  used on input line 147.
 (pdftex.def)             Requested size: 284.52756pt x 205.82092pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 150--151
+Underfull \hbox (badness 10000) in paragraph at lines 151--152
 
  []
 
 [2 <./images/pic1.png> <./images/pic2.png> <./images/pic3.png>]
-<images/pic4.png, id=31, 624.3325pt x 768.8725pt>
+<images/pic4.png, id=32, 624.3325pt x 768.8725pt>
 File: images/pic4.png Graphic file (type png)
 <use images/pic4.png>
-Package pdftex.def Info: images/pic4.png  used on input line 162.
+Package pdftex.def Info: images/pic4.png  used on input line 163.
 (pdftex.def)             Requested size: 218.51964pt x 269.1094pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 168--169
+Underfull \hbox (badness 10000) in paragraph at lines 169--170
 
  []
 
-<images/pic5.png, id=32, 1011.78pt x 859.21pt>
+<images/pic5.png, id=33, 1011.78pt x 859.21pt>
 File: images/pic5.png Graphic file (type png)
 <use images/pic5.png>
-Package pdftex.def Info: images/pic5.png  used on input line 178.
+Package pdftex.def Info: images/pic5.png  used on input line 179.
 (pdftex.def)             Requested size: 252.94438pt x 214.80197pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [3 <./images/pic4.png>]
-<images/pic6.png, id=38, 907.39pt x 588.1975pt>
+<images/pic6.png, id=39, 907.39pt x 588.1975pt>
 File: images/pic6.png Graphic file (type png)
 <use images/pic6.png>
-Package pdftex.def Info: images/pic6.png  used on input line 194.
+Package pdftex.def Info: images/pic6.png  used on input line 195.
 (pdftex.def)             Requested size: 226.84694pt x 147.04901pt.
-<images/pic7.png, id=39, 891.33pt x 449.68pt>
+<images/pic7.png, id=40, 891.33pt x 449.68pt>
 File: images/pic7.png Graphic file (type png)
 <use images/pic7.png>
-Package pdftex.def Info: images/pic7.png  used on input line 199.
+Package pdftex.def Info: images/pic7.png  used on input line 200.
 (pdftex.def)             Requested size: 222.83195pt x 112.41972pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [4 <./images/pic5.png> <./images/pic6.png>] [5 <./images/pic7.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 243--244
+Underfull \hbox (badness 10000) in paragraph at lines 244--245
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 246--248
+Underfull \hbox (badness 10000) in paragraph at lines 247--249
 
  []
 
 [6] (./SC607-2019-Lecture15.aux) ) 
 Here is how much of TeX's memory you used:
- 3674 strings out of 492982
- 54092 string characters out of 6134896
- 117473 words of memory out of 5000000
- 7193 multiletter control sequences out of 15000+600000
+ 3676 strings out of 492982
+ 54109 string characters out of 6134895
+ 117492 words of memory out of 5000000
+ 7195 multiletter control sequences out of 15000+600000
  9458 words of font info for 35 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 44i,10n,49p,434b,363s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 44i,12n,49p,434b,363s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/pu
 blic/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
 msfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
@@ -360,13 +360,14 @@ nts/type1/public/amsfonts/cm/cmss8.pfb></usr/share/texlive/texmf-dist/fonts/typ
 e1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
 lic/amsfonts/cm/cmsy5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
 fonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols
-/msam10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/
-msbm10.pfb>
-Output written on SC607-2019-Lecture15.pdf (6 pages, 378332 bytes).
+m/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti
+7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10
+.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.
+pfb>
+Output written on SC607-2019-Lecture15.pdf (6 pages, 386833 bytes).
 PDF statistics:
- 106 PDF objects out of 1000 (max. 8388607)
- 66 compressed objects within 1 object stream
+ 110 PDF objects out of 1000 (max. 8388607)
+ 69 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  36 words of extra memory for PDF output out of 10000 (max. 10000000)
 
